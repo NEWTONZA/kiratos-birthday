@@ -1,131 +1,159 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Kiratos!</title>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family: 'Caveat', cursive;
-            text-align: center;
-            padding: 20px;
-            overflow-x: hidden;
-        }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        .message {
-            border: 2px dashed #fff;
-            padding: 30px;
-            margin: 40px auto;
-            position: relative;
-            background-color: rgba(0,0,0,0.5);
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-        
-        p {
-            font-size: 1.5rem;
-            line-height: 1.6;
-        }
-        
-        .language-switch {
-            background: none;
-            border: 1px solid #fff;
-            color: #fff;
-            padding: 8px 15px;
-            font-family: 'Caveat', cursive;
-            cursor: pointer;
-            margin: 20px;
-            font-size: 1.2rem;
-            border-radius: 20px;
-            transition: all 0.3s;
-        }
-        
-        .language-switch:hover {
-            background: rgba(255,255,255,0.1);
-        }
-        
-        .hand-drawing {
-            position: absolute;
-            opacity: 0.7;
-        }
-        
-        .drawing1 { top: 10%; left: 5%; width: 80px; }
-        .drawing2 { top: 70%; right: 8%; width: 60px; }
-        .drawing3 { bottom: 10%; left: 10%; width: 70px; }
-        
-        @media (max-width: 600px) {
-            h1 { font-size: 1.8rem; }
-            p { font-size: 1.2rem; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Kiratos</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #fff;
+  font-family: 'Shadows Into Light', cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.card {
+  border: 2px dashed white;
+  padding: 30px;
+  width: 90vw;
+  max-width: 600px;
+  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 10px white;
+  position: relative;
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+#message {
+  font-size: 1.2rem;
+  min-height: 150px;
+}
+
+#langBtn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  padding: 5px 10px;
+  border: 1px dashed white;
+  background: none;
+  color: white;
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 0.9rem;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+#langBtn:hover {
+  opacity: 1;
+  background-color: white;
+  color: black;
+}
+
+.signature {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  font-size: 0.9rem;
+  color: white;
+  opacity: 0.7;
+}
+
+.cake {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  width: 50px;
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  #message {
+    font-size: 1rem;
+  }
+
+  #langBtn {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+  }
+}
+
+  </style>
 </head>
 <body>
-    <div class="container">
-        <button class="language-switch" id="switchLang">日本語 / English</button>
-        
-        <div class="message" id="message">
-            <h1 id="title">Happy 21st Birthday Kiratos!</h1>
-            <p id="content">Even though we haven't known each other for long, happy 21st birthday! May all your wishes come true. May the world be kind to you. Wishing you happiness every day.</p>
-        </div>
-        
-        <img src="https://i.imgur.com/JD7kQqF.png" class="hand-drawing drawing1" alt="drawing">
-        <img src="https://i.imgur.com/9X8ZJYt.png" class="hand-drawing drawing2" alt="drawing">
-        <img src="https://i.imgur.com/5V5q2Qm.png" class="hand-drawing drawing3" alt="drawing">
-    </div>
-    
-    <script>
-        // Message data
-        const messages = {
-            en: {
-                title: "Happy 21st Birthday Kiratos!",
-                content: "Even though we haven't known each other for long, happy 21st birthday! May all your wishes come true. May the world be kind to you. Wishing you happiness every day."
-            },
-            jp: {
-                title: "キラトスさん 21歳のお誕生日おめでとう！",
-                content: "まだ知り合って間もないですが、21歳のお誕生日おめでとうございます！何を考え、何を望んでも、それが叶いますように。世界があなたに優しくありますように。毎日たくさんの幸せがありますように。"
-            }
-        };
-        
-        // Typewriter effect
-        function typeWriter(element, text, speed = 30) {
-            let i = 0;
-            element.textContent = "";
-            function typing() {
-                if (i < text.length) {
-                    element.textContent += text.charAt(i);
-                    i++;
-                    setTimeout(typing, speed);
-                }
-            }
-            typing();
+  <div class="card">
+    <h1>Happy 21st Birthday, Kiratos (キラトスさん)!</h1>
+    <p id="message"></p>
+    <button id="langBtn" onclick="toggleLanguage()">日本語</button>
+    <div class="signature">From Newton(ニゅートン)</div>
+    <img class="cake" src="cake-doodle-white.png" alt="cake sketch">
+  </div>  <script>
+    const message = document.getElementById('message');
+    const langBtn = document.getElementById('langBtn');
+    let isEnglish = true;
+    let typingInterval = null;
+
+    const english = `Even though we haven't known each other for very long,\nhappy 21st birthday! I hope everything you wish for comes true.\nMay the world be kind to you, and may you be happy every day.`;
+
+    const japanese = `まだ知り合って間もないけれど、\n21歳のお誕生日おめでとうございます！\n願っていることがすべて叶いますように。\n世界があなたに優しくありますように、毎日が幸せでありますように。`;
+
+    function typeText(text) {
+      if (typingInterval) clearInterval(typingInterval);
+      message.innerHTML = '';
+      const lines = text.split('\n');
+      let lineIndex = 0;
+      let charIndex = 0;
+      let span = document.createElement('span');
+      message.appendChild(span);
+
+      typingInterval = setInterval(() => {
+        if (lineIndex >= lines.length) {
+          clearInterval(typingInterval);
+          typingInterval = null;
+          return;
         }
-        
-        // Language switch
-        let currentLang = 'en';
-        document.getElementById('switchLang').addEventListener('click', function() {
-            currentLang = currentLang === 'en' ? 'jp' : 'en';
-            typeWriter(document.getElementById('title'), messages[currentLang].title);
-            typeWriter(document.getElementById('content'), messages[currentLang].content);
-            this.textContent = currentLang === 'en' ? '日本語 / English' : 'English / 日本語';
-        });
-        
-        // Initial animation
-        window.onload = function() {
-            typeWriter(document.getElementById('title'), messages[currentLang].title);
-            typeWriter(document.getElementById('content'), messages[currentLang].content);
-        };
-    </script>
-</body>
+
+        const line = lines[lineIndex];
+        if (charIndex < line.length) {
+          span.innerHTML += line[charIndex++];
+        } else {
+          message.appendChild(document.createElement('br'));
+          lineIndex++;
+          charIndex = 0;
+          span = document.createElement('span');
+          message.appendChild(span);
+        }
+      }, 40);
+    }
+
+    function toggleLanguage() {
+      if (typingInterval) return; // ป้องกันการสลับระหว่างพิมพ์
+      isEnglish = !isEnglish;
+      if (isEnglish) {
+        langBtn.textContent = '日本語';
+        typeText(english);
+      } else {
+        langBtn.textContent = 'English';
+        typeText(japanese);
+      }
+    }
+
+    window.onload = () => {
+      typeText(english);
+    }
+  </script></body>
 </html>
