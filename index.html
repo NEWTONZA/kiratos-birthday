@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Kiratos!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Caveat', cursive;
+            text-align: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .message {
+            border: 2px dashed #fff;
+            padding: 30px;
+            margin: 40px auto;
+            position: relative;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            font-size: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .language-switch {
+            background: none;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 8px 15px;
+            font-family: 'Caveat', cursive;
+            cursor: pointer;
+            margin: 20px;
+            font-size: 1.2rem;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        
+        .language-switch:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .hand-drawing {
+            position: absolute;
+            opacity: 0.7;
+        }
+        
+        .drawing1 { top: 10%; left: 5%; width: 80px; }
+        .drawing2 { top: 70%; right: 8%; width: 60px; }
+        .drawing3 { bottom: 10%; left: 10%; width: 70px; }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            p { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="language-switch" id="switchLang">日本語 / English</button>
+        
+        <div class="message" id="message">
+            <h1 id="title">Happy 21st Birthday Kiratos!</h1>
+            <p id="content">Even though we haven't known each other for long, happy 21st birthday! May all your wishes come true. May the world be kind to you. Wishing you happiness every day.</p>
+        </div>
+        
+        <img src="https://i.imgur.com/JD7kQqF.png" class="hand-drawing drawing1" alt="drawing">
+        <img src="https://i.imgur.com/9X8ZJYt.png" class="hand-drawing drawing2" alt="drawing">
+        <img src="https://i.imgur.com/5V5q2Qm.png" class="hand-drawing drawing3" alt="drawing">
+    </div>
+    
+    <script>
+        // Message data
+        const messages = {
+            en: {
+                title: "Happy 21st Birthday Kiratos!",
+                content: "Even though we haven't known each other for long, happy 21st birthday! May all your wishes come true. May the world be kind to you. Wishing you happiness every day."
+            },
+            jp: {
+                title: "キラトスさん 21歳のお誕生日おめでとう！",
+                content: "まだ知り合って間もないですが、21歳のお誕生日おめでとうございます！何を考え、何を望んでも、それが叶いますように。世界があなたに優しくありますように。毎日たくさんの幸せがありますように。"
+            }
+        };
+        
+        // Typewriter effect
+        function typeWriter(element, text, speed = 30) {
+            let i = 0;
+            element.textContent = "";
+            function typing() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typing, speed);
+                }
+            }
+            typing();
+        }
+        
+        // Language switch
+        let currentLang = 'en';
+        document.getElementById('switchLang').addEventListener('click', function() {
+            currentLang = currentLang === 'en' ? 'jp' : 'en';
+            typeWriter(document.getElementById('title'), messages[currentLang].title);
+            typeWriter(document.getElementById('content'), messages[currentLang].content);
+            this.textContent = currentLang === 'en' ? '日本語 / English' : 'English / 日本語';
+        });
+        
+        // Initial animation
+        window.onload = function() {
+            typeWriter(document.getElementById('title'), messages[currentLang].title);
+            typeWriter(document.getElementById('content'), messages[currentLang].content);
+        };
+    </script>
+</body>
+</html>
